@@ -1,0 +1,11 @@
+{
+  "name": "Bride Price",
+  "short_name": "Bride Price",
+  "description": "Ten camels for Salma.",
+  "start_url": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#ead8b0",
+  "theme_color": "#1a1410",
+  "icons": [{ "src": "icon.png", "sizes": "256x256", "type": "image/png" }]
+}
