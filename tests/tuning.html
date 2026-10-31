@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Bride Price Tuning</title>
+    <link rel="icon" type="image/png" href="./test-icon.png" />
+    <!-- Sliders for the numbers that set the game's feel (src/editor/tuningPage.ts, the list in src/data/sliders.json),
+         on the desktop's test page (Tools) and the phone's (Scenes). What is set is kept in this browser and the game
+         plays with it from the next game started here (src/core/tuned.ts). -->
+    <style>
+      body { margin: 0; background: #ead8b0; color: #1a1410; font: 17px/1.4 Georgia, serif; }
+      main { max-width: 640px; margin: 0 auto; padding: 12px 12px 64px; padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); padding-top: max(12px, env(safe-area-inset-top)); }
+      h1 { font-size: 24px; font-weight: normal; margin: 4px 0 6px; }
+      p { margin: 0 0 12px; color: #5a4a3e; font-size: 15px; }
+      a { color: inherit; }
+      .bar { position: sticky; top: 0; z-index: 1; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 -12px 14px; padding: 8px 12px; padding-top: max(8px, env(safe-area-inset-top)); background: #ead8b0; border-bottom: 1px solid #a08a68; }
+      .bar span { flex: 1 1 100%; font-size: 15px; color: #5a4a3e; }
+      button { font: inherit; font-size: 16px; padding: 8px 12px; background: #f6ead0; border: 2px solid #1a1410; color: #1a1410; border-radius: 0; }
+      button:active { background: #fff6e2; }
+      details { margin: 0 0 8px; }
+      summary { cursor: pointer; padding: 12px 14px; background: #e2cda2; border: 2px solid #1a1410; font-size: 18px; }
+      summary small { float: right; color: #a4473a; font-size: 15px; }
+      details[open] summary { margin-bottom: 8px; }
+      .item { padding: 10px 14px 12px; margin: 0 0 8px 12px; background: #f6ead0; border: 2px solid #1a1410; }
+      .item.changed { border-color: #a4473a; background: #fff1dc; }
+      .item label { display: block; font-size: 15px; }
+      .row { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+      .row input[type=range] { flex: 1; height: 36px; accent-color: #a4473a; }
+      .row b { min-width: 56px; text-align: right; font-size: 18px; }
+      .row button { padding: 4px 10px; font-size: 14px; }
+      .item small { display: block; color: #7a6650; font-size: 13px; }
+      textarea { box-sizing: border-box; width: 100%; font: inherit; font-size: 15px; padding: 8px 10px; border: 2px solid #1a1410; background: #fffaf0; min-height: 60px; margin: 6px 0 12px; }
+    </style>
+    <script type="module" crossorigin src="./assets/tuning-ClOjLPXQ.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
+    <link rel="modulepreload" crossorigin href="./assets/tuning-DNh95P7p.js">
+    <link rel="modulepreload" crossorigin href="./assets/tunedStore-B84095MN.js">
+  </head>
+  <body>
+    <main>
+      <h1>Tuning</h1>
+      <p>Slide a number and the game plays with it from the next game you start, here in this browser (on the phone: both copies of the game). A changed one shows red, with its usual value under it. <a href="./tests.html">Back to the tests</a></p>
+      <div class="bar"><span id="count"></span><button id="all">Put all back</button><button id="save">Save for Claude</button></div>
+      <div id="groups"></div>
+      <p>A note for Claude with what you saved (what you tried, how it felt):</p>
+      <textarea id="note"></textarea>
+      <p id="said"></p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "Bride Price Tests",
+  "short_name": "BP Tests",
+  "description": "The test scenes of Bride Price, on the phone.",
+  "start_url": "./tests.html",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "#ead8b0",
+  "theme_color": "#2d6699",
+  "icons": [{ "src": "test-icon.png", "sizes": "256x256", "type": "image/png" }]
+}

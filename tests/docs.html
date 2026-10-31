@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Bride Price: a document</title>
+    <link rel="icon" type="image/png" href="./test-icon.png" />
+    <meta name="theme-color" content="#2d6699" />
+    <!-- One of the project's documents, set for reading (src/dev/docPage.ts): from the test page on the computer, and
+         from the phone's test copy (tests.html, its Read tab; tools/deploy.mjs builds this page into it). Each part under
+         a heading folds shut, so a long document is a short list on a phone. -->
+    <style>
+      body { margin: 0; min-height: 100vh; background: #ead8b0; color: #1a1410; font: 17px/1.55 Georgia, serif; }
+      main { max-width: 760px; margin: 0 auto; padding: 16px 12px 60px; padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
+      .bar { position: sticky; top: 0; z-index: 1; display: flex; justify-content: space-between; align-items: center; gap: 8px; margin: 0 -12px 12px; padding: 8px 12px; padding-top: max(8px, env(safe-area-inset-top)); background: #ead8b0; border-bottom: 1px solid #a08a68; }
+      .bar a, .bar button { font: inherit; font-size: 16px; color: #1a1410; background: #f6ead0; border: 2px solid #1a1410; padding: 6px 12px; text-decoration: none; }
+      h1 { font-weight: normal; font-size: 23px; line-height: 1.25; margin: 0 0 12px; }
+      h2 { font-weight: normal; font-size: 21px; margin: 0 0 10px; }
+      h3 { font-weight: normal; font-size: 19px; margin: 18px 0 6px; }
+      h4 { font-size: 17px; margin: 16px 0 4px; }
+      p, li { margin: 0 0 10px; }
+      ul { padding-left: 20px; }
+      code { font: 14px ui-monospace, monospace; background: #ead8b0; padding: 0 3px; overflow-wrap: anywhere; }
+      a { color: #a4473a; overflow-wrap: anywhere; }
+      #doc { background: #f6ead0; border: 2px solid #1a1410; padding: 14px 14px 4px; }
+      .part { border-top: 1px solid #a08a68; margin: 0 -14px; padding: 0 14px; }
+      .part summary { cursor: pointer; font-size: 19px; padding: 12px 0; list-style-position: outside; margin-left: 18px; }
+      .part[open] summary { color: #a4473a; }
+      .part > div { padding: 0 0 8px; }
+      @media (min-width: 700px) { main { padding: 28px 18px 60px; } #doc { padding: 18px 22px 6px; } .part { margin: 0 -22px; padding: 0 22px; } }
+    </style>
+    <script type="module" crossorigin src="./assets/docs-CIcu5eJx.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-Dp1pzeXC.js">
+    <link rel="modulepreload" crossorigin href="./assets/docList-DBSox_T0.js">
+  </head>
+  <body>
+    <main>
+      <div class="bar"><a id="back" href="./test.html">Back</a><button id="all" hidden>Open all</button></div>
+      <h1 id="title"></h1>
+      <div id="doc">Reading…</div>
+    </main>
+  </body>
+</html>

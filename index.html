@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#1a1410" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Bride Price" />
+    <title>Bride Price</title>
+    <link rel="icon" type="image/png" href="./icon.png" />
+    <link rel="apple-touch-icon" href="./icon.png" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <style>
+      /* The page is the sand's colour (palette.json "sand") from the first moment, under the storm (below). */
+      html, body { margin: 0; height: 100%; background: #ead8b0; color-scheme: light; overflow: hidden; overscroll-behavior: none; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent; }
+      #game { position: fixed; inset: 0; }
+      canvas { image-rendering: pixelated; display: block; }
+      #boot { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 2; } /* (no background of its own: behind the storm's front its cells are clear, and the title shows through [a tan canvas hid it till the end: my partner 2026-10-24]) */
+      /* Measures the phone's notch and home bar for the screen layer (core/screen.ts). */
+      #safe { position: fixed; inset: 0; visibility: hidden; pointer-events: none; padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px); }
+    </style>
+    <script type="module" crossorigin src="./assets/index-JsGda9YN.js"></script>
+  </head>
+  <body>
+    <div id="safe"></div>
+    <div id="game"></div>
+    <canvas id="boot"></canvas>
+    <script>var sandTile=(()=>{var y=Object.defineProperty;var G=Object.getOwnPropertyDescriptor;var P=Object.getOwnPropertyNames;var D=Object.prototype.hasOwnProperty;var F=(e,n)=>{for(var a in n)y(e,a,{get:n[a],enumerable:!0})},T=(e,n,a,t)=>{if(n&&typeof n=="object"||typeof n=="function")for(let r of P(n))!D.call(e,r)&&r!==a&&y(e,r,{get:()=>n[r],enumerable:!(t=G(n,r))||t.enumerable});return e};var j=e=>T(y({},"__esModule",{value:!0}),e);var N={};F(N,{sandPixels:()=>I,sandScreen:()=>z});function v(e){let n=4022871197,a=1;const t=s=>{for(let o=0;o<s.length;o++){n+=s.charCodeAt(o);let i=.02519603282416938*n;n=i>>>0,i-=n,i*=n,n=i>>>0,i-=n,n+=i*4294967296}return(n>>>0)*23283064365386963e-26};let r=t(" "),u=t(" "),c=t(" ");r-=t(e),r+=~~(r<0),u-=t(e),u+=~~(u<0),c-=t(e),c+=~~(c<0);const h=()=>{const s=2091639*r+a*23283064365386963e-26;return a=s|0,r=u,u=c,c=s-a,c};return()=>h()+(h()*2097152|0)*11102230246251565e-32}const U=e=>e*e*(3-2*e);function A(e,n,a){const t=Array.from({length:n*n},()=>e()),r=(u,c)=>t[(c+n)%n*n+(u+n)%n];return(u,c)=>{const h=u/a*n,s=c/a*n,o=Math.floor(h),i=Math.floor(s),f=U(h-o),l=U(s-i),C=r(o,i)+(r(o+1,i)-r(o,i))*f,p=r(o,i+1)+(r(o+1,i+1)-r(o,i+1))*f;return C+(p-C)*l}}function z(e,n,a,t,r){const u=new Uint32Array(e.buffer,e.byteOffset,n*n),c=new Uint8ClampedArray(a*t*4),h=new Uint32Array(c.buffer),s=new Int32Array(a);for(let o=0;o<a;o++)s[o]=Math.floor((o+.5)/r)%n;for(let o=0;o<t;o++){const i=Math.floor((o+.5)/r)%n*n,f=o*a;for(let l=0;l<a;l++)h[f+l]=u[i+s[l]]}return c}function I(e,n){const a=v(String(e.seed)),t=e.size*n,r=e.ripple,u=new Uint8ClampedArray(t*t*4),{base:c,dark:h,light:s}=e.rgb,o=A(a,e.grainPatches,t),i=A(a,r.patches,t),f=t/Math.max(1,Math.round(t/(r.spacing*n))),l=r.warpCells.map((m,b)=>({noise:A(a,m,t),by:r.warp[b]*f})),C=A(a,r.crestCells,t),p=(m,b)=>{u[m]=b[0],u[m+1]=b[1],u[m+2]=b[2],u[m+3]=255},S=(m,b)=>{const d=((b+l.reduce((g,x)=>g+(x.noise(m,b)-.5)*2*x.by,0))%f+f)%f;return d<1?"line":d<2?"lit":""};for(let m=0;m<t;m++)for(let b=0;b<t;b++){const w=(m*t+b)*4,d=Math.max(0,Math.min(1,(i(b,m)-(1-r.share))/.12)),g=d>0?Math.max(0,Math.min(1,(C(b,m)-r.crestFrom)/.1))*d:0,x=g>0?S(b,m):"";if(x==="line"&&a()<r.line*g){p(w,h);continue}if(x==="lit"&&a()<r.lit*g){p(w,s);continue}const M=1+(o(b,m)-.5)*2*e.grainDrift,k=a();p(w,k<e.darkGrainChance*M?h:k<(e.darkGrainChance+e.lightGrainChance)*M?s:c)}return u}return j(N);})();
+window.SAND={"style":{"base":"@sand","grainDark":"@sandDark","grainLight":"@sandLight","darkGrainChance":0.05,"lightGrainChance":0.03,"seed":7,"size":256,"grainDrift":0.45,"grainPatches":3,"ripple":{"spacing":7,"warpCells":[2,6,13],"warp":[1.6,2,0.5],"crestCells":28,"crestFrom":0.55,"share":0.35,"patches":3,"line":0.8,"lit":0.45},"rgb":{"base":[234,216,176],"dark":[217,193,147],"light":[246,234,208]}},"ppu":2};</script>
+    <script>
+      // What the game opens under (ui/bootStorm.ts says why): the title page's own sand, still, from the very first
+      // moment, drawn here before any of the game has loaded; and once the title page has drawn itself beneath, the
+      // reveal [my partner 2026-10-24: "instead of the intro storm it should just be the regular title screen backgound
+      // for a tick, then the full screen particle reveal exactly as it is... the reveal is really cool"; a storm of
+      // floating grains before it was "too much like an actual static tv"]. The sand: the title's own sand tile, pixel
+      // for pixel (made by art/sandTile.ts, which vite.config.ts puts in at the mark above, as sandTile and SAND), laid
+      // as TitleScene lays it: from the top left, an art pixel to zoom / 2 canvas pixels, at the game canvas's own size
+      // [grains of its own, at the sand's density but none of its ripples, showed a seam as the front passed: my partner
+      // 2026-10-25]. The tile is handed on (bootStorm.sand), so the title does not make it again. The title page calls
+      // bootStorm.clear({ boxes }) once drawn, boxes where its words and figures stand; this holds HOLD ms from the
+      // first and SETTLE ms after the screen last changed size (never more than WAIT ms past the call), then a slanted
+      // front sweeps left to right over SWEEP ms: behind it the title's own sand shows, and over its words and figures
+      // the sand lifts off grain by grain (within LIFT ms of the front) and blows away to the right, uncovering them.
+      // The sand is one picture at the screen's own size (sandTile.sandScreen), the very one the title shows, laid down
+      // once; the sweep and the lifting grains are worked out a grain to a pixel on small canvases and stretched over it.
+      (function () {
+        var c = document.getElementById('boot'), g = c.getContext('2d'), k = Math.min(2, Math.max(1, window.devicePixelRatio || 1));
+        var HOLD = 450, SETTLE = 250, WAIT = 1500, SWEEP = 1300, BAND = 0.22, LIFT = 380, SLANT = 0.45, sand = SAND.style.rgb;
+        var BASE = rgba(sand.base), DARK = rgba(sand.dark), LIGHT = rgba(sand.light);
+        var tile = sandTile.sandPixels(SAND.style, SAND.ppu), tn = SAND.style.size * SAND.ppu, CUT = rgba([0, 0, 0]);
+        var W, H, s, cw, ch, full, lo, lx, img, px, flo, fx, fimg, fpx, delay, lifted, boxes = null, parts = [], seed = 2463534242;
+        var born = performance.now(), last = born, moved = born, called = 0, from = 0, done = 0;
+        function rgba(c) { return (255 << 24) | (c[2] << 16) | (c[1] << 8) | c[0]; } // (as a little-endian pixel)
+        function rnd() { seed ^= seed << 13; seed ^= seed >>> 17; seed ^= seed << 5; return (seed >>> 0) / 4294967296; }
+        function fit() {
+          // (A window with no size yet, as a phone's can be for its first moment: a canvas of one pixel, made again at the
+          // first real size.) The size the game canvas takes (main.ts): the visible part of the page.
+          var vv = window.visualViewport, w = Math.max(1, Math.round(((vv && vv.width) || innerWidth) * k)), h = Math.max(1, Math.round(((vv && vv.height) || innerHeight) * k));
+          if (w === W && h === H) return;
+          W = c.width = w; H = c.height = h;
+          s = Math.max(2, Math.round(Math.min(W, H) / 130)) / 2; cw = Math.ceil(W / s); ch = Math.ceil(H / s);
+          full = document.createElement('canvas'); full.width = W; full.height = H;
+          var fi = full.getContext('2d').createImageData(W, H); fi.data.set(sandTile.sandScreen(tile, tn, W, H, s)); full.getContext('2d').putImageData(fi, 0, 0);
+          // (Where the sand is cut away, and the grains in the air.)
+          lo = document.createElement('canvas'); lo.width = cw; lo.height = ch; lx = lo.getContext('2d');
+          img = lx.createImageData(cw, ch); px = new Uint32Array(img.data.buffer);
+          flo = document.createElement('canvas'); flo.width = cw; flo.height = ch; fx = flo.getContext('2d');
+          fimg = fx.createImageData(cw, ch); fpx = new Uint32Array(fimg.data.buffer);
+          moved = performance.now(); mark();
+        }
+        // Each grain over the title's words and figures lifts off at its own moment after the front passes it.
+        function mark() {
+          delay = new Float32Array(cw * ch).fill(-1); lifted = new Uint8Array(cw * ch);
+          if (!boxes) return;
+          for (var i = 0; i < boxes.length; i++) {
+            var b = boxes[i], x0 = Math.max(0, Math.floor(b.x / s) - 1), y0 = Math.max(0, Math.floor(b.y / s) - 1), x1 = Math.min(cw - 1, Math.ceil((b.x + b.w) / s) + 1), y1 = Math.min(ch - 1, Math.ceil((b.y + b.h) / s) + 1);
+            for (var y = y0; y <= y1; y++) for (var x = x0; x <= x1; x++) delay[y * cw + x] = rnd() * LIFT;
+          }
+        }
+        function frame(now) {
+          if (!W) { requestAnimationFrame(frame); return; } // (no size yet: nothing to draw till the next resize)
+          var dt = Math.min(0.05, (now - last) / 1000);
+          last = now;
+          if (called && !from) { var at = Math.min(called + WAIT, Math.max(called, born + HOLD, moved + SETTLE)); if (now >= at) from = now; }
+          var passing = from > 0, band = BAND * cw, run = cw + band + SLANT * ch + (LIFT / SWEEP) * cw, speed = run / SWEEP;
+          var front = passing ? (now - from) * speed : -1e9; // (cells, at the top row; each row below lags a little: a slant)
+          // The sand, still, ahead of the front; behind it the title shows through, but over its words and figures the
+          // sand stays till its moment, then lifts off as particles.
+          g.imageSmoothingEnabled = false;
+          g.clearRect(0, 0, W, H);
+          g.drawImage(full, 0, 0);
+          if (!passing) { requestAnimationFrame(frame); return; }
+          for (var y = 0; y < ch; y++) {
+            var f = front - y * SLANT, row = y * cw;
+            for (var x = 0; x < cw; x++) {
+              var i2 = row + x, behind = f - x, d = delay[i2];
+              if (behind <= 0) { px[i2] = 0; continue; }
+              if (d >= 0 && behind / speed < d) { px[i2] = 0; continue; }
+              if (d >= 0 && !lifted[i2]) { lifted[i2] = 1; var r = rnd(); if (r < 0.7) parts.push({ x: x, y: y, vx: (25 + rnd() * 80) * (1.4 - y / ch * 0.4), vy: -10 - rnd() * 25, t: 0, life: 0.35 + rnd() * 0.5, col: r < 0.2 ? DARK : r < 0.32 ? LIGHT : BASE }); }
+              px[i2] = CUT;
+            }
+          }
+          // The sand lifting off the words, blowing away right, thinning out.
+          var still = 0;
+          fpx.fill(0);
+          for (var n = 0; n < parts.length; n++) {
+            var o = parts[n];
+            if (o.t >= o.life) continue;
+            o.t += dt; o.x += o.vx * dt; o.y += o.vy * dt; o.vx *= 1 + dt;
+            var ox = Math.round(o.x), oy = Math.round(o.y);
+            if (ox >= 0 && ox < cw && oy >= 0 && oy < ch && rnd() > o.t / o.life) fpx[oy * cw + ox] = o.col;
+            still++;
+          }
+          if (parts.length > 4000 && still === 0) parts.length = 0;
+          lx.putImageData(img, 0, 0); fx.putImageData(fimg, 0, 0);
+          g.globalCompositeOperation = 'destination-out';
+          g.drawImage(lo, 0, 0, cw * s, ch * s);
+          g.globalCompositeOperation = 'source-over';
+          g.drawImage(flo, 0, 0, cw * s, ch * s);
+          if (passing && front - ch * SLANT > cw + band + (LIFT / SWEEP) * run && !still) { done = done || now; if (now - done > 80) { c.remove(); return; } }
+          c.style.pointerEvents = 'none'; // (passing: a tap reaches the title; till then a tap on the hidden page does nothing)
+          requestAnimationFrame(frame);
+        }
+        try { fit(); } catch (e) { W = 0; }
+        function refit() { try { fit(); } catch (e) { W = 0; } }
+        addEventListener('resize', refit);
+        if (window.visualViewport) visualViewport.addEventListener('resize', refit);
+        window.bootStorm = { sand: tile, clear: function (info) { if (!called) { called = performance.now(); boxes = (info && info.boxes) || null; mark(); } } };
+        requestAnimationFrame(frame);
+      })();
+    </script>
+  </body>
+</html>

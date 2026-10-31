@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Bride Price Tests</title>
+    <link rel="icon" type="image/png" href="./test-icon.png" />
+    <link rel="manifest" href="./tests.webmanifest" />
+    <link rel="apple-touch-icon" href="./test-icon.png" />
+    <meta name="theme-color" content="#2d6699" />
+    <!-- The phone's test page [my partner 2026-10-24: "i need a separate phone program like the gameplay tests of bride
+         price test so i can quickly test fights and scenerios on my phone and mark them and record them like in bride
+         price, and plz make the phone thumbnail the water djinn"]: in three tabs (src/dev/phonePage.ts) [2026-10-25: "put
+         the reading files in bride price test phone app... make the interface and organization more user friendly on
+         there so i dont have to scroll a million options"]: the test scenes by kind, folded, with a search, each opening
+         the game at ?test=name in this copy, which has the scenes in it (vite.config.ts VITE_TESTS; tools/deploy.mjs
+         builds it into dist/tests, so it lives at the phone copy's address under /tests/); the reading (docs.html, built
+         in); Salma's poems. Mark this moment and Keep this play work in it as in the game (the pause menu); a kept play
+         downloads to the phone. Its home-screen icon is the water djinn (tests.webmanifest, test-icon.png). The
+         desktop's test page is test.html (the dev server only). -->
+    <style>
+      body { margin: 0; min-height: 100vh; background: #ead8b0; color: #1a1410; font: 17px/1.4 Georgia, serif; }
+      main { max-width: 640px; margin: 0 auto; padding: 12px 12px 48px; padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
+      nav small, .hers small { color: #8a7a6a; font-size: 12px; }
+      nav { flex-wrap: wrap; }
+      nav a { flex: 1 0 28%; }
+      nav { position: sticky; top: 0; z-index: 1; display: flex; gap: 6px; margin: 0 -12px 14px; padding: 8px 12px; padding-top: max(8px, env(safe-area-inset-top)); background: #ead8b0; border-bottom: 1px solid #a08a68; }
+      nav a { flex: 1; text-align: center; padding: 10px 4px; background: #f6ead0; border: 2px solid #1a1410; color: inherit; text-decoration: none; font-size: 17px; }
+      nav a.on { background: #1a1410; color: #f6ead0; }
+      nav em { font-style: normal; font-size: 13px; background: #a4473a; color: #f6ead0; border-radius: 9px; padding: 0 6px; margin-left: 4px; vertical-align: 2px; }
+      p { margin: 0 0 12px; color: #5a4a3e; font-size: 15px; }
+      a.card, #docs a, .group a { display: block; padding: 10px 14px; margin: 0 0 8px; background: #f6ead0; border: 2px solid #1a1410; color: inherit; text-decoration: none; }
+      a.card:active, #docs a:active, .group a:active { background: #fff6e2; }
+      a b { display: block; font-size: 18px; font-weight: normal; }
+      a span { display: block; color: #5a4a3e; font-size: 14px; line-height: 1.35; }
+      a small { display: block; color: #7a6650; font-size: 13px; margin-top: 4px; }
+      a.card b { font-weight: bold; }
+      em.new { font-style: normal; font-size: 13px; background: #a4473a; color: #f6ead0; padding: 0 6px; border-radius: 9px; vertical-align: 2px; }
+      input[type=search] { box-sizing: border-box; width: 100%; font: inherit; padding: 10px 12px; margin: 0 0 12px; border: 2px solid #1a1410; background: #fffaf0; color: #1a1410; border-radius: 0; }
+      .group { margin: 0 0 8px; }
+      .group summary { cursor: pointer; padding: 12px 14px; background: #e2cda2; border: 2px solid #1a1410; font-size: 18px; }
+      .group summary small { float: right; color: #5a4a3e; font-size: 15px; }
+      .group[open] summary { margin-bottom: 8px; }
+      .group a { margin-left: 12px; }
+      .poem { background: #f6ead0; border: 2px solid #1a1410; padding: 10px 14px 4px; margin: 0 0 12px; }
+      .poem h4 { margin: 0 0 8px; font-weight: normal; font-size: 17px; }
+      .poem h4 span { color: #5a4a3e; font-size: 15px; }
+      .hers { font-size: 18px; margin: 0 0 8px; }
+      .hers div, .his div { margin: 0 0 3px; }
+      .his { color: #5a4a3e; padding: 0 0 8px; }
+      .poem summary { cursor: pointer; font-size: 15px; color: #5a4a3e; padding: 6px 0; }
+    </style>
+    <script type="module" crossorigin src="./assets/tests-BMQ2gjjf.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
+    <link rel="modulepreload" crossorigin href="./assets/tuning-DNh95P7p.js">
+    <link rel="modulepreload" crossorigin href="./assets/mapFog-BsZqsZbP.js">
+    <link rel="modulepreload" crossorigin href="./assets/newScenes-CzSfznel.js">
+    <link rel="modulepreload" crossorigin href="./assets/testScenes-CJd6N0k8.js">
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-Dp1pzeXC.js">
+    <link rel="modulepreload" crossorigin href="./assets/docList-DBSox_T0.js">
+  </head>
+  <body>
+    <main>
+      <nav><a id="tab-scenes" href="#scenes">Scenes</a><a id="tab-read" href="#read">Read<em id="read-new" hidden></em></a><a id="tab-poems" href="#poems">Poems</a><a id="tab-talk" href="#talk">Dialogue</a><a id="tab-barks" href="#barks">Barks</a><a id="tab-news" href="#news">News</a><a id="tab-screens" href="#screens">Screens</a></nav>
+
+      <section id="panel-scenes">
+        <a class="card" href="./"><b>The game</b><span>From the title, as it is.</span></a>
+        <a class="card" href="./tuning.html"><b>Tuning</b><span>Sliders for the numbers that set the feel. Both copies of the game on this phone play with what you set. Save for Claude downloads the list to send.</span></a>
+        <p>Each scene opens the game set up to try one thing. In the pause menu: Mark this moment, and Keep this play (it downloads: send the file to Claude).</p>
+        <input id="find" type="search" placeholder="Find a scene (djinn, wolves, ending…)" autocomplete="off" />
+        <div id="tests"></div>
+      </section>
+
+      <section id="panel-read" hidden>
+        <p>What Claude keeps for you. A red mark: changed since you last opened it on this phone. Inside, each part folds open.</p>
+        <div id="docs"></div>
+      </section>
+
+      <section id="panel-poems" hidden>
+        <p>Every poem in the game is Salma's, spoken to a stranger she knows by his colour. Under each, folded: hers when she loved him, and his old version.</p>
+        <div id="poems"></div>
+      </section>
+
+      <section id="panel-talk" hidden>
+        <p>Everything said in talk: at Malik's fire, in New Game+, in the cave. A name in {braces} is filled in by the game.</p>
+        <div id="talk"></div>
+      </section>
+
+      <section id="panel-barks" hidden>
+        <p>The word over a man's head, by what has happened.</p>
+        <div id="barks"></div>
+      </section>
+
+      <section id="panel-news" hidden>
+        <p>The news at the top of the screen, and the line under an ending's title. A name in {braces} is filled in by the game; the small word beside each is its name in the game's text.</p>
+        <div id="news"></div>
+      </section>
+
+      <section id="panel-screens" hidden>
+        <p>The rest of the game's words: the title, How to play, the buttons, the pause menu, along the top, the endings' titles, the names. The verses are in Poems.</p>
+        <div id="screens"></div>
+      </section>
+    </main>
+  </body>
+</html>
