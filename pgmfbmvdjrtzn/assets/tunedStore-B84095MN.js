@@ -1,0 +1,1 @@
+const u="bride.tuning";function a(){try{const t=JSON.parse(localStorage.getItem(u)??"{}");return t&&typeof t=="object"?t:{}}catch{return{}}}function p(t,r){const n=r.split("."),c=n.pop(),e=n.reduce((o,s)=>o&&typeof o=="object"?o[s]:void 0,t);return e&&typeof e=="object"&&typeof e[c]=="number"?{at:e,key:c}:void 0}export{u as T,p as s,a as t};
