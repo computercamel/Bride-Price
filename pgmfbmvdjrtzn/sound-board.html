@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="BP Tests" />
+    <title>Bride Price Sound Board</title>
+    <link rel="icon" type="image/png" href="./test-icon.png" />
+    <style>
+      body { margin: 0; background: #ead8b0; color: #1a1410; font: 17px/1.4 Georgia, serif; }
+      main { max-width: 640px; margin: 0 auto; padding: 12px 12px 64px; padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); padding-top: max(12px, env(safe-area-inset-top)); }
+      h2 { font-size: 20px; font-weight: normal; margin: 18px 0 8px; }
+      h1 { font-size: 24px; font-weight: normal; margin: 4px 0 6px; }
+      p { margin: 0 0 12px; color: #5a4a3e; font-size: 15px; }
+      a { color: inherit; }
+      .bar { position: sticky; top: 0; z-index: 1; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 -12px 14px; padding: 8px 12px; padding-top: max(8px, env(safe-area-inset-top)); background: #ead8b0; border-bottom: 1px solid #a08a68; }
+      .bar span { flex: 1 1 100%; font-size: 15px; color: #5a4a3e; }
+      button { font: inherit; font-size: 16px; padding: 8px 12px; background: #f6ead0; border: 2px solid #1a1410; color: #1a1410; border-radius: 0; }
+      button:active { background: #fff6e2; }
+      details { margin: 0 0 8px; padding: 0 12px 4px; background: #f6ead0; border: 2px solid #1a1410; }
+      details.changed { border-color: #a4473a; background: #fff1dc; }
+      summary { cursor: pointer; padding: 12px 2px; font-size: 19px; }
+      fieldset { border: 1px solid #a08a68; margin: 10px 0; padding: 4px 10px 8px; }
+      legend, select { font: inherit; font-size: 15px; }
+      .num label { display: block; font-size: 15px; margin-top: 8px; }
+      .num small { color: #7a6650; font-size: 13px; margin-left: 8px; }
+      .row { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
+      .row input[type=range] { flex: 1; height: 36px; accent-color: #a4473a; }
+      .row b { min-width: 56px; text-align: right; font-size: 17px; }
+      textarea { box-sizing: border-box; width: 100%; font: inherit; font-size: 15px; padding: 8px 10px; border: 2px solid #1a1410; background: #fffaf0; min-height: 60px; margin: 6px 0 12px; }
+    </style>
+    <script type="module" crossorigin src="./assets/sound-board-DYNK-Dst.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/tuning-C-iDsxL1.js">
+    <link rel="modulepreload" crossorigin href="./assets/music-BfOyrYzU.js">
+    <link rel="modulepreload" crossorigin href="./assets/saved-COtk05e2.js">
+  </head>
+  <body>
+    <main>
+      <h1>Sound board</h1>
+      <p>The music and every sound the game makes. Play one, open it, slide a number and let go to hear it again. A changed one shows red, and the game plays with what you set from the next time it loads, here in this browser (on the phone: both copies of the game). The phone's silent switch must be off. <a href="./tests.html">Back to the tests</a></p>
+      <div class="bar"><span id="count"></span><button id="all">Put all back</button><button id="save">Save</button></div>
+      <h2>Music</h2>
+      <div id="music"></div>
+      <h2>Effects</h2>
+      <div id="sounds"></div>
+      <p>A note with what you saved (what you changed, what still sounds wrong):</p>
+      <textarea id="note"></textarea>
+      <p id="said"></p>
+    </main>
+  </body>
+</html>
