@@ -1,0 +1,1 @@
+async function t(e,a,n){const s=await fetch(`/__saved?kind=${e}`,{method:"POST",body:JSON.stringify({item:a,png:n})});return s.ok?s.text():void 0}const i=(e,a)=>a?`Saved as saved/${e}/${a}.`:"Saving failed (is the game server running?).";export{t as a,i as s};
